@@ -1,0 +1,4 @@
+resources:
+  - country_server-configMap.yaml
+  - country_server-cluster-ip-service.yaml
+  - country_server-deployment.yaml

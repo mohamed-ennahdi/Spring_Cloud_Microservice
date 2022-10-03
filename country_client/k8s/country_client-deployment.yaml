@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: country-client-v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: country-client-v1
+  template:
+    metadata:
+      labels:
+        component: country-client-v1
+    spec:
+      containers:
+        - name: country-client-v1
+          image: country-client:0.0.1-SNAPSHOT
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 9090
+          env:
+            - name: APPLICATION_NAME
+              valueFrom:
+                configMapKeyRef:
+                  key: application.name
+                  name: country-client-v1-properties

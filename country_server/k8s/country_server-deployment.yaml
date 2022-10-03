@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: country-server-microservice-v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: country-server-microservice-v1
+  template:
+    metadata:
+      labels:
+        component: country-server-microservice-v1
+    spec:
+      containers:
+        - name: country-server-microservice-v1
+          image: country-server:0.0.1-SNAPSHOT
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 9000
+          env:
+            - name: APPLICATION_NAME
+              valueFrom:
+                configMapKeyRef:
+                  key: application.name
+                  name: country-server-v1-properties

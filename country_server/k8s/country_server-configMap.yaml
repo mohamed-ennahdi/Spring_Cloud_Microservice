@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: country-server-v1-properties
+data:
+  server.port: '9000'
+  server.servlet.contextpath: '/country-server'
+  
+  application.name: 'country-server-microservice'

@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: eureka-server-microservice-v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: eureka-server-microservice-v1
+  template:
+    metadata:
+      labels:
+        component: eureka-server-microservice-v1
+    spec:
+      containers:
+        - name: eureka-server-microservice-v1
+          image: eureka-server:0.0.1-SNAPSHOT
+          imagePullPolicy: Never
+          ports:
+          - containerPort: 8888
+          env:
+            - name: APPLICATION-NAME
+              valueFrom:
+                configMapKeyRef:
+                  key: application.name
+                  name: eureka-server-v1-properties

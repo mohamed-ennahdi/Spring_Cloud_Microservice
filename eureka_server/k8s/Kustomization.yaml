@@ -1,0 +1,4 @@
+resources:
+  - eureka_server-configMap.yaml
+  - eureka_server-cluster-ip-service.yaml
+  - eureka_server-deployment.yaml
